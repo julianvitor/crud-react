@@ -13,7 +13,8 @@ import {
   deleteUserSuccess,
   deleteUserFailure,
 } from "./actions";
-import { User } from "../../types";
+import { User } from './types';
+
 
 interface UsersState {
   loading: boolean;

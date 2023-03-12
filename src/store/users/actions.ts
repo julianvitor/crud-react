@@ -1,5 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
-import { User } from "../../types";
+import { User } from './types';
+
 
 export const getUsersRequest = createAction("users/getUsersRequest");
 export const getUsersSuccess = createAction<User[]>("users/getUsersSuccess");
