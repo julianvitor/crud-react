@@ -1,34 +1,56 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
-import { fetchUsers } from '../types/userActions';
-import { User } from '../types/User';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
+import { getUsers, deleteUser } from "../store/users/thunks";
 
-const UserList: React.FC = () => {
+interface User {
+  id: number;
+  email: string;
+  username: string;
+  password: string;
+}
+
+export default function UserList() {
   const dispatch = useDispatch();
-  const users = useSelector<RootState, User[]>((state) => state.users);
-  const loading = useSelector<RootState, boolean>((state) => state.loading);
+  const users = useSelector((state: RootState) => state.users.items);
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(getUsers());
   }, [dispatch]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const handleDelete = (id: number) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      dispatch(deleteUser(id));
+    }
+  };
 
   return (
     <div>
       <h1>User List</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.username} - {user.email}
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user: User) => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.email}</td>
+              <td>{user.username}</td>
+              <td>{user.password}</td>
+              <td>
+                <button onClick={() => handleDelete(user.id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-};
-
-export default UserList;
+}
