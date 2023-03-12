@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*", "*.ts"]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -21,6 +26,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "src/reducers/Reducer.ts",
+    "src/components/UserList.tsx"
   ]
 }
