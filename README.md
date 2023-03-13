@@ -9,9 +9,8 @@ O arquivo App.tsx, localizado na pasta src, que define as rotas da aplicação e
 Além disso, o projeto utiliza outras bibliotecas importantes como o react-router-dom para gerenciar as rotas da aplicação, o axios para fazer as requisições à API e o react-hook-form para validar os formulários.
 
 # Para utilizar a aplicação
-execute em seu terminal:
-> git clone https://github.com/julianvitor/crud-react.git
-> cd crud-react
-> npm install
-> npm start
-
+# execute em seu terminal:
+* git clone https://github.com/julianvitor/crud-react.
+* cd crud-react
+* npm install
+* npm start
